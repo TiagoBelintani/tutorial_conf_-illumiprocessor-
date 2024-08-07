@@ -1,0 +1,103 @@
+important: for detailed information, quotes and other questions, access the package repositories:
+
+  https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#assemble-the-data
+  https://github.com/faircloth-lab/illumiprocessor/
+
+Tutorial: Configuring Illumina Adapter Sequences and Tags for New Samples
+
+This tutorial will guide you through the process of configuring Illumina adapter sequences and tags for new samples, based on a provided example configuration.
+
+Understanding the Configuration File
+The configuration file consists of several sections:
+
+#Adapters: Sequences used in preparing the Illumina library.
+#Tag Sequences: Unique sequences assigned to each sample for multiplexing.
+#Tag Map: Mapping of samples to their corresponding tag sequences.
+#Names: Readable names for each sample.
+
+Configuration Example
+
+Adapters
+
+i7: GATCGGAAGAGCACACGTCTGAACTCCAGTCAC*ATCTCGTATGCCGTCTTCTGCTTG
+i5: AATGATACGGCGACCACCGAGATCTACAC*ACACTCTTTCCCTACACGACGCTCTTCCGATCT
+The i7 and i5 sequences include the bases used in sequencing followed by a * and a sequence to be completed with the sample-specific tag.
+
+Tag Sequences
+
+i7_P001_WA01:GTGTTCTA
+i7_P001_WA02:AGTCACTA
+...
+I5_P002_W_AB:CTTCGCCT
+I5_P002_W_A0:TAAGATTA
+Each tag is assigned an identifier (e.g. i7_P001_WA01) and a string (e.g. GTGTTCTA).
+
+Tag Map
+
+Homo_sapiens_GTGTTCTA:i7_P001_WA01,I5_P002_W_AB
+Pantera_pantera_AGTCACTA:i7_P001_WA02,I5_P002_W_AB
+...
+This section maps each sample to its corresponding i7 and i5 tags.
+
+Names
+
+Homo_sapiens:Homo_sapiens
+Pantera_pantera_AGTCACTA:Pantera_pantera
+...
+This section provides human-readable names for each sample.
+
+Creating a New Configuration
+To create a new configuration, follow these steps:
+
+Prepare Adapter Sequences: Make sure you have the adapter sequences needed for your experiment. These are usually provided by the kit manufacturer.
+Generate Tag Sequences: Create unique tag sequences for each of your samples. Make sure these sequences are unique to avoid cross-sample contamination.
+Map Tags to Samples: Create a mapping of your samples to the i7 and i5 tags.
+Assign Names: Assign human-readable names to your samples.
+
+Example
+Assuming you have the following new samples and tag sequences:
+
+New Tag Strings
+
+i7_New1: TGCATCGA
+i7_New2: GCTAGCTA
+i5_New1: CGTAGCTA
+i5_New2: TACTGATC
+
+New Samples
+
+Sample1: i7_New1, i5_New1
+Sample2: i7_New2, i5_New2
+
+Names
+
+Sample1_TGCATCGA: Sample1
+Sample2_GCTAGCTA: Sample2
+
+[adapters]
+i7: GATCGGAAGAGCACACGTCTGAACTCCAGTCAC*TGCATCGA
+i5: AATGATACGGCGACCACCGAGATCTACAC*CGTAGCTA
+
+[tag sequences]
+i7_New1:TGCATCGA
+i7_New2:GCTAGCTA
+i5_New1:CGTAGCTA
+i5_New2:TACTGATC
+
+[tag map]
+Sample1_TGCATCGA:i7_New1,i5_New1
+Sample2_GCTAGCTA:i7_New2,i5_New2
+
+[names]
+Sample1_TGCATCGA:Sample1
+Sample2_GCTAGCTA:Sample2
+
+Steps to Create Your Configuration
+Prepare Adapter Sequences: Make sure you have the sequences provided by the kit manufacturer.
+Define Your Tag Sequences: Make sure each sequence is unique.
+Map Each Sample to Its Tags: Create a logical mapping.
+Assign Readable Names: Make sure each sample has a clear, descriptive name.
+
+Summary
+This tutorial explained how to understand an existing setup for Illumina processing and create a new setup with different sequences.
+By following these steps, you can configure your samples for Illumina sequencing, ensuring that each sample is uniquely identified by its adapter sequences and tags.
