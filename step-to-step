@@ -1,11 +1,11 @@
-important: for detailed information, quotes and other questions, access the package repositories:
+#important: for detailed information, quotes and other questions, access the package repositories:
 
   https://phyluce.readthedocs.io/en/latest/tutorials/tutorial-1.html#assemble-the-data
   https://github.com/faircloth-lab/illumiprocessor/
 
-Tutorial: Configuring Illumina Adapter Sequences and Tags for New Samples
+#Tutorial: Configuring Illumina Adapter Sequences and Tags for New Samples
 
-This tutorial will guide you through the process of configuring Illumina adapter sequences and tags for new samples, based on a provided example configuration.
+>This tutorial will guide you through the process of configuring Illumina adapter sequences and tags for new samples, based on a provided example configuration.
 
 Understanding the Configuration File
 The configuration file consists of several sections:
